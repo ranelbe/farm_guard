@@ -1,19 +1,55 @@
 #include "CaptureCamera.h"
 
+/*
+ * Constructor for CaptureCamera
+ * Open camera with cameraIndex
+ * If camera is not opened, print error message
+ * Set camera resolution
+ */
 CaptureCamera::CaptureCamera() {
-    m_cap.open(0);
+    m_cap.open(cameraIndex);
     if (!m_cap.isOpened()) {
-        std::cout << "Camera not opened" << std::endl;
-        exit(0);
+        std::cerr << "Error: Could not open camera" << std::endl;
     }
+    //set camera resolution
+    setCameraResolution(512, 288);
 }
 
-void CaptureCamera::captureFrame() {
-    Mat frame;
+/*
+* set camera resolution
+* @param width - camera width
+* @param height - camera height
+*/
+void CaptureCamera::setCameraResolution(int width, int height)
+{
+    m_cap.set(cv::CAP_PROP_FRAME_WIDTH, width);
+    m_cap.set(cv::CAP_PROP_FRAME_HEIGHT, height);
+}
+
+/*
+ * Capture frame from camera and return it
+ * @return frame - captured frame
+ * If frame is empty, print error message
+ */
+cv::Mat CaptureCamera::captureFrame() {
+    cv::Mat frame;
     m_cap >> frame;
     if (frame.empty()) {
-        std::cout << "No frame captured" << std::endl;
-        return;
+        std::cerr << "Error: Could not capture frame" << std::endl;
+        return frame;
     }
     return frame;
+}
+
+/*
+ * Destructor for CaptureCamera
+ * If camera is opened, release it
+ * Destroys all windows
+ */
+CaptureCamera::~CaptureCamera()
+{
+    if (m_cap.isOpened()) {
+        m_cap.release();
+    }
+    cv::destroyAllWindows();
 }

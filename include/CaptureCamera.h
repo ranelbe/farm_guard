@@ -4,10 +4,12 @@
 
 class CaptureCamera {
 
-    VideoCapture m_cap;
+    cv::VideoCapture m_cap{};
+    void setCameraResolution(int width, int height);
 
     public:
     CaptureCamera();
-    void captureFrame();
+    ~CaptureCamera();
+    cv::Mat captureFrame();
 };
 
