@@ -1,7 +1,11 @@
 #include <iostream>
+#include "MovmentDetection.h"
+
 
 int main()
 {
-	std::cout << "Hello World!" << std::endl;
+	MovementDetection detector;
+	detector.processFrames();
+
 	return EXIT_SUCCESS;
 }
