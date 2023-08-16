@@ -2,7 +2,7 @@
 
 static pid_t pid = 0;
 
-void takePic (char* filename)
+void CaptureCamera::takePic (char* filename)
 {
     if((pid = fork()) == 0)
     {
