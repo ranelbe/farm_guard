@@ -22,5 +22,7 @@ add_executable (farm_guard "")
 add_subdirectory (include)
 add_subdirectory (src)
 
+target_link_libraries(farm_guard PRIVATE curl)
+
 
 

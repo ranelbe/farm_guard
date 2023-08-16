@@ -1,7 +1,15 @@
 #include <iostream>
 
+#include "ActivateAlarm.h"
+
+using std::cout;
+using std::endl;
+
 int main()
 {
-	std::cout << "Hello World!" << std::endl;
-	return EXIT_SUCCESS;
+    ActivateAlarm alarm;
+    alarm.activateAlarm();
+    alarm.SendingEMLWithSMTP();
+
+    return EXIT_SUCCESS;
 }
