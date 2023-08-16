@@ -1,14 +1,12 @@
-//
-// Created by Yaakov Haimoff on 16/08/2023.
-//
+#pragma once
 
-#ifndef FARM_GUARD_CONTROLLER_H
-#define FARM_GUARD_CONTROLLER_H
-
+#include "CaptureCamera.h"
 
 class Controller {
+    CaptureCamera m_camera;
+
+public:
+    void run();
 
 };
 
-
-#endif //FARM_GUARD_CONTROLLER_H

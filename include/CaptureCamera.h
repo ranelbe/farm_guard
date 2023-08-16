@@ -1,11 +1,13 @@
 # pragma once
 
-#include <csignal>
-#include <unistd.h>
-#include <string>
+#include "macros.h"
 
 class CaptureCamera {
+
+    VideoCapture m_cap;
+
     public:
-    void takePic(char* filename);
+    CaptureCamera();
+    void captureFrame();
 };
 
