@@ -1,5 +1,4 @@
 # pragma once
-
 #include "macros.h"
 
 class CaptureCamera {
@@ -8,8 +7,8 @@ class CaptureCamera {
     void setCameraResolution(int width, int height);
 
     public:
-    CaptureCamera();
-    ~CaptureCamera();
-    cv::Mat captureFrame();
+        CaptureCamera();
+        ~CaptureCamera();
+        cv::Mat captureFrame();
 };
 

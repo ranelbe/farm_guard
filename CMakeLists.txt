@@ -19,8 +19,8 @@ endif ()
 
 add_executable (farm_guard "")
 
-#find_package(OpenCV REQUIRED)
-#target_link_libraries(farm_guard PRIVATE ${OpenCV_LIBS})
+find_package(OpenCV REQUIRED)
+target_link_libraries(farm_guard PRIVATE ${OpenCV_LIBS})
 
 
 add_subdirectory (include)
