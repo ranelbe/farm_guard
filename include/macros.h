@@ -4,6 +4,8 @@
 #include <iostream>
 #include <string>
 #include "opencv2/opencv.hpp"
+#include <cstdlib>
+#include <curl/curl.h>
 
 const int cameraIndex = 0;
 constexpr int CAMERA_WIDTH = 512;

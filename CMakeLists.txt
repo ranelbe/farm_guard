@@ -21,10 +21,7 @@ add_executable (farm_guard "")
 
 find_package(OpenCV REQUIRED)
 target_link_libraries(farm_guard PRIVATE ${OpenCV_LIBS})
-
+target_link_libraries(farm_guard PRIVATE curl)
 
 add_subdirectory (include)
 add_subdirectory (src)
-
-
-
