@@ -12,7 +12,7 @@ CaptureCamera::CaptureCamera() {
         std::cerr << "Error: Could not open camera" << std::endl;
     }
     //set camera resolution
-    setCameraResolution(512, 288);
+    setCameraResolution(CAMERA_WIDTH, CAMERA_HEIGHT);
 }
 
 /*

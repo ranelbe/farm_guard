@@ -3,7 +3,7 @@
 /*
 * process frames - read frames from camera and detect movement
 */
-bool MovementDetection::processFrame(const cv::Mat& frame)
+bool MovementDetection::detectMovement(const cv::Mat& frame)
 {
     if (_isFirstFrame) {
 		_prevFrame = frame.clone();
