@@ -4,14 +4,9 @@
 
 class MovementDetection
 {
-	void initializeCamera(int cameraIndex);
-	void setCameraResolution(int width, int height);
-	cv::VideoCapture _camera;
-	
+	cv::Mat _prevFrame;
+	bool _isFirstFrame = true;
 public:
-	MovementDetection();
-	~MovementDetection();
-	
-	void processFrames();
+	bool processFrames(const cv::Mat& frame);
 
 };
