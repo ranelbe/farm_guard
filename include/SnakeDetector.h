@@ -1,21 +1,14 @@
-#ifndef SNAKE_DETECTOR_H
-#define SNAKE_DETECTOR_H
+#pragma once
 
-#include <opencv2/opencv.hpp>
-#include <opencv2/dnn/dnn.hpp>
 #include <iostream>
+#include <opencv2/opencv.hpp>
 
 class SnakeDetector {
 public:
-    // Constructor to load the model
     SnakeDetector(const std::string& modelPath);
-
-    // Detect if an image contains a snake
-    bool detect(const cv::Mat& image);
+    bool isSnakeDetected(const cv::Mat& frame);
 
 private:
     cv::dnn::Net net;
-    const float confidenceThreshold = 0.5f;
 };
 
-#endif //SNAKE_DETECTOR_H
