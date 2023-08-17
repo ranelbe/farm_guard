@@ -10,7 +10,7 @@ void ActivateAlarm::SendingEMLWithSMTP() {
 
     if (curl) {
         std::string from = "ex5springyaakovhaimoff@gmail.com";
-        std::string to = "yaakovha@edu.hac.ac.il.com";
+        std::string to = "hyaakov@aol.com";
         std::string subject = "Test Subject";
         std::string body = "This is the email body.";
 
