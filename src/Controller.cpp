@@ -7,6 +7,7 @@ void Controller::run()
         cv::Mat processedImage;
 
         if (!frame.empty()) {
+
             // Process the captured frame, e.g., send for detection
             // You can also break the loop or add other logic here
             if (m_movementDetection.detectMovement(frame)) {

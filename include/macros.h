@@ -10,3 +10,6 @@ constexpr int CAMERA_WIDTH = 512;
 constexpr int CAMERA_HEIGHT = 288;
 constexpr int ESC_KEY = 27;
 constexpr int FRAME_SIZE = 224;
+constexpr int THRESHOLD_LOWER = 65;
+constexpr int THRESHOLD_UPPER = 255;
+constexpr int THRESHOLD_AREA = 350;

@@ -6,8 +6,8 @@
 
 class MovementDetection
 {
-	cv::Mat _prevFrame;
-	bool _isFirstFrame = true;
+	cv::Mat m_prevFrame;
+	bool m_isFirstFrame = true;
 
 public:
 	bool detectMovement(const cv::Mat& frame);
