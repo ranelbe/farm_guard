@@ -8,4 +8,5 @@ class ActivateAlarm {
     public:
     void activateAlarm();
     void SendingEMLWithSMTP();
+    void SendingSMSWithTwilio();
 };
