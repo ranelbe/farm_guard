@@ -4,4 +4,5 @@ target_sources(farm_guard PRIVATE
         "Controller.cpp"
         "MovementDetection.cpp"
         #"ActivateAlarm.cpp"
-        "ImageProcess.cpp")
+        "ImageProcess.cpp"
+        "SnakeDetector.cpp")
