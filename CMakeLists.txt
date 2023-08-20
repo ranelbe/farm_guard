@@ -21,7 +21,12 @@ add_executable (farm_guard "")
 
 find_package(OpenCV REQUIRED)
 target_link_libraries(farm_guard PRIVATE ${OpenCV_LIBS})
-target_link_libraries(farm_guard PRIVATE curl)
+
+list(APPEND CMAKE_PREFIX_PATH "C:/Users/Ranel/Desktop/raspberry pi old/vcpkg/installed/x64-windows/debug/bin")
+find_package(CURL REQUIRED)
+target_link_libraries(farm_guard PRIVATE CURL::libcurl)
+
+
 
 add_subdirectory (include)
 add_subdirectory (src)

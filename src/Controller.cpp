@@ -24,7 +24,7 @@ void Controller::run()
         cv::imshow("Frame", frame);
 
         // Press ESC on keyboard to exit
-        if ((cv::waitKey(10) % 256) == ESC_KEY)
+        if ((cv::waitKey(WAIT_DELAY) % 256) == ESC_KEY)
             break;
     }
 }

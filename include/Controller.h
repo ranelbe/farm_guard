@@ -10,7 +10,7 @@ class Controller {
     CaptureCamera m_camera;
     MovementDetection m_movementDetection;
     ImageProcess m_imageProcess;
-    ActivateAlarm m_activateAlarm;
+    //ActivateAlarm m_activateAlarm;
 
 public:
     void run();
