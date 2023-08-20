@@ -4,26 +4,12 @@
 
 int main() {
     try {
-        // Initialize the snake detector
         SnakeDetector detector("C:/Users/User/Desktop/raspberry pi/raspberry-team_4_farm_guard/Resources/fine_tuned_model/frozen_model.pb");
 
         // Read a single image
-        cv::Mat frame = cv::imread("C:/Users/User/Desktop/raspberry pi/raspberry-team_4_farm_guard/Resources/sample_snake_image/trial.JPG");
+        cv::Mat frame = cv::imread("C:/Users/User/Desktop/raspberry pi/raspberry-team_4_farm_guard/Resources/sample_snake_image/123.jpg");
 
-        if (frame.empty()) {
-            std::cerr << "Error loading image!" << std::endl;
-            return -1;
-        }
-
-        if (detector.isSnakeDetected(frame)) {
-            std::cout << "Snake detected in the image!" << std::endl;
-        } else {
-            std::cout << "No snake detected in the image." << std::endl;
-        }
-
-        // Display image for visualization
-        cv::imshow("Image", frame);
-        cv::waitKey(0);
+        detector.runSnakeDetector(frame);
 
         return 0;
 
@@ -34,5 +20,5 @@ int main() {
     } catch (...) {
         std::cerr << "Unknown Exception occurred." << std::endl;
     }
-    return -1; // Return an error code if an exception was caught
+    return -1;
 }
