@@ -7,10 +7,10 @@
 #include "ActivateAlarm.h"
 
 class Controller {
-    CaptureCamera m_camera;
-    MovementDetection m_movementDetection;
-    ImageProcess m_imageProcess;
-    ActivateAlarm m_activateAlarm;
+    CaptureCamera _camera;
+    MovementDetection _movementDetection;
+    ImageProcess _imageProcess;
+    ActivateAlarm _activateAlarm;
 
 public:
     void run();

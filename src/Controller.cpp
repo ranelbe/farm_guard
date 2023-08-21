@@ -3,19 +3,21 @@
 void Controller::run()
 {
     while (true) {
-        cv::Mat frame = m_camera.captureFrame();
+        cv::Mat frame = _camera.captureFrame();
         cv::Mat processedImage;
 
         if (!frame.empty()) {
 
             // Process the captured frame, e.g., send for detection
             // You can also break the loop or add other logic here
-            if (m_movementDetection.detectMovement(frame)) {
+            if (_movementDetection.detectMovement(frame)) {
                 cv::putText(frame, "Motion Detected", cv::Point(10, 20), 
                     cv::FONT_HERSHEY_SIMPLEX, 0.75, cv::Scalar(0, 0, 255), 2);
-                processedImage = m_imageProcess.processImage(frame);
+                processedImage = _imageProcess.processImage(frame);
 
-                cv::imshow("Processed Image", processedImage);
+//                cv::imshow("Processed Image", processedImage);
+
+//                _activateAlarm.activateAlarm();
 
                 // Add a delay or any other necessary logic here
             }

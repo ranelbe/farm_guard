@@ -4,7 +4,7 @@
 
 class CaptureCamera {
 
-    cv::VideoCapture m_cap{};
+    cv::VideoCapture _cap{};
     void setCameraResolution(int width, int height);
 
     public:

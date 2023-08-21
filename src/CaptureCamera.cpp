@@ -7,8 +7,8 @@
  * Set camera resolution
  */
 CaptureCamera::CaptureCamera() {
-    m_cap.open(cameraIndex);
-    if (!m_cap.isOpened()) {
+    _cap.open(cameraIndex);
+    if (!_cap.isOpened()) {
         std::cerr << "Error: Could not open camera" << std::endl;
     }
     //set camera resolution
@@ -22,8 +22,8 @@ CaptureCamera::CaptureCamera() {
 */
 void CaptureCamera::setCameraResolution(int width, int height)
 {
-    m_cap.set(cv::CAP_PROP_FRAME_WIDTH, width);
-    m_cap.set(cv::CAP_PROP_FRAME_HEIGHT, height);
+    _cap.set(cv::CAP_PROP_FRAME_WIDTH, width);
+    _cap.set(cv::CAP_PROP_FRAME_HEIGHT, height);
 }
 
 /*
@@ -33,7 +33,7 @@ void CaptureCamera::setCameraResolution(int width, int height)
  */
 cv::Mat CaptureCamera::captureFrame() {
     cv::Mat frame;
-    m_cap >> frame;
+    _cap >> frame;
     if (frame.empty()) {
         std::cerr << "Error: Could not capture frame" << std::endl;
         return frame;
@@ -48,8 +48,8 @@ cv::Mat CaptureCamera::captureFrame() {
  */
 CaptureCamera::~CaptureCamera()
 {
-    if (m_cap.isOpened()) {
-        m_cap.release();
+    if (_cap.isOpened()) {
+        _cap.release();
     }
     cv::destroyAllWindows();
 }
