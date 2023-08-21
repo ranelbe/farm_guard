@@ -56,7 +56,7 @@ void ActivateAlarm::SendingSMSWithTwilio() {
         curl_easy_setopt(_curl, CURLOPT_POSTFIELDS, data.c_str());
 
         std::string ssid = "ACe3ae33a0ff68abf9bab8a30c5a07c9ed";
-        std::string auth_token = "e95ccac232150f6a27b5e8e685bcf089";
+        std::string auth_token = "4c06074e54733e60220af20ddc304737";
 
         // Set basic authentication
         std::string auth = ssid + ":" + auth_token;
@@ -76,3 +76,4 @@ ActivateAlarm::~ActivateAlarm() {
     curl_easy_cleanup(_curl);
     curl_global_cleanup();
 }
+

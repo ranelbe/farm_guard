@@ -15,3 +15,5 @@ constexpr int FRAME_SIZE = 224;
 constexpr int THRESHOLD_LOWER = 65;
 constexpr int THRESHOLD_UPPER = 255;
 constexpr int THRESHOLD_AREA = 350;
+constexpr int FPS = 30;  
+constexpr int WAIT_DELAY = 1000 / FPS;

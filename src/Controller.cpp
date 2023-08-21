@@ -1,7 +1,11 @@
 #include "Controller.h"
 
+Controller::Controller() : _snakeDetector("/Users/yaakovhaimoff/Desktop/school/year_3/semester2/excellents/bootcamp/raspberryPi/Resources/fine_tuned_model/frozen_model.pb")
+{}
+
 void Controller::run()
 {
+
     while (true) {
         cv::Mat frame = _camera.captureFrame();
         cv::Mat processedImage;
@@ -13,20 +17,15 @@ void Controller::run()
             if (_movementDetection.detectMovement(frame)) {
                 cv::putText(frame, "Motion Detected", cv::Point(10, 20), 
                     cv::FONT_HERSHEY_SIMPLEX, 0.75, cv::Scalar(0, 0, 255), 2);
-                processedImage = _imageProcess.processImage(frame);
-
-//                cv::imshow("Processed Image", processedImage);
-
-//                _activateAlarm.activateAlarm();
-
-                // Add a delay or any other necessary logic here
+                if(_snakeDetector.runSnakeDetector(frame))
+                    _activateAlarm.SendingSMSWithTwilio();
             }
         }
 
         cv::imshow("Frame", frame);
 
         // Press ESC on keyboard to exit
-        if ((cv::waitKey(10) % 256) == ESC_KEY)
+        if ((cv::waitKey(WAIT_DELAY) % 256) == ESC_KEY)
             break;
     }
 }
