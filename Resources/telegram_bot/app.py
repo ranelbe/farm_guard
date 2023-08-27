@@ -3,7 +3,7 @@ import requests
 
 # ===================== CONFIGURATION =====================
 PORT = 5002
-TOKEN = '6073682811:AAE7r1njaXqzDMcC-uOhra3RDBTtbbdLjU0'
+TOKEN = ''
 TELEGRAM_INIT_WEBHOOK_URL = 'https://api.telegram.org/bot{}/setWebhook?' \
     'url=https://3c00-82-80-173-170.ngrok-free.app/message'.format(TOKEN)
 ALERT_MSG = 'Alert: Snakes detected in your coop. Please take immediate action to ensure the safety of your animals.'
