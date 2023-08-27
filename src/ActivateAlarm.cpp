@@ -1,16 +1,27 @@
 #include "ActivateAlarm.h"
 
+/*
+    This constructor activates the curl library.
+ */
 ActivateAlarm::ActivateAlarm() {
     curl_global_init(CURL_GLOBAL_ALL);
     _curl = curl_easy_init();
 }
 
+/*
+    This function is responsible for activating the alarm and sending the alert, this is done using the function
+    SendingSMSWithTwilio which sends an SMS alert to the user's Twillo's APP.
+ */
 void ActivateAlarm::activateAlarm() {
 //    SendingEMLWithSMTP();
     SendingSMSWithTwilio();
     std::cout << "sent an sms to the farmer" << std::endl;
 }
 
+/*
+    This function is not implemented yet, but could be used for further purposes, it basically writes an email alert
+    to the user using Gmail's Simple Mail Transfer Protocol.
+ */
 void ActivateAlarm::SendingEMLWithSMTP() {
     if (_curl) {
         std::string from = "ex5springyaakovhaimoff@gmail.com";
@@ -36,6 +47,11 @@ void ActivateAlarm::SendingEMLWithSMTP() {
     }
 }
 
+
+/*
+    This function sends an SMS alert using Twilio API. It configures the CURL handle to perform an HTTP POST request to
+    Twilio API endpoint.
+ */
 void ActivateAlarm::SendingSMSWithTwilio() {
     if (_curl) {
         // Set API endpoint URL
@@ -72,6 +88,8 @@ void ActivateAlarm::SendingSMSWithTwilio() {
     }
 }
 
+
+/*Destructor,  It cleans up and releases resources associated with the _curl handle and the curl library. */
 ActivateAlarm::~ActivateAlarm() {
     curl_easy_cleanup(_curl);
     curl_global_cleanup();
