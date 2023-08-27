@@ -3,16 +3,17 @@ import requests
 
 # ===================== CONFIGURATION =====================
 PORT = 5002
-TOKEN = ''
+TOKEN = '6073682811:AAE7r1njaXqzDMcC-uOhra3RDBTtbbdLjU0'
 TELEGRAM_INIT_WEBHOOK_URL = 'https://api.telegram.org/bot{}/setWebhook?' \
-    'url=https://8584-82-80-173-170.ngrok-free.app/message'.format(TOKEN)
+    'url=https://3c00-82-80-173-170.ngrok-free.app/message'.format(TOKEN)
 ALERT_MSG = 'Alert: Snakes detected in your coop. Please take immediate action to ensure the safety of your animals.'
+CHAT_ID = '876438964'
 
-app = Flask(__name__)  # create a Flask app
+# ===================== INITIALIZATION =====================
+app = Flask(__name__)
 
 
-# ===================== ROUTES ============================
-
+# ===================== ROUTES =============================
 # sanity route to check if server is running
 @app.route('/sanity')
 def sanity():
@@ -22,10 +23,9 @@ def sanity():
 # get message from telegram route
 @app.route('/message', methods=['POST'])
 def handle_message():
-    print("got message")
-    chat_id = request.get_json()['message']['chat']['id']
+    data = request.json
     res = requests.get("https://api.telegram.org/bot{}/sendMessage?chat_id={}&text={}"
-                       .format(TOKEN, chat_id, ALERT_MSG))
+                       .format(TOKEN, CHAT_ID, data['text']))
     return Response("success")
 
 
