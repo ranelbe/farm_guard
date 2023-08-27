@@ -1,8 +1,11 @@
 #include "ActivateAlarm.h"
+#include <nlohmann/json.hpp>
 
 ActivateAlarm::ActivateAlarm() {
     curl_global_init(CURL_GLOBAL_ALL);
     _curl = curl_easy_init();
+    _message = "Alert: Snakes detected in your coop. "
+               "Please take immediate action to ensure the safety of your animals.";
 }
 
 void ActivateAlarm::activateAlarm() {
@@ -47,8 +50,7 @@ void ActivateAlarm::SendingSMSWithTwilio() {
 
         std::string from = "+18146489292";
         std::string to = "+972506550336";
-        std::string body = "Alert: Snakes detected in your coop. "
-                           "Please take immediate action to ensure the safety of your animals.";
+        std::string body = _message;
 
         // Set data to be sent (URL-encoded)
         std::string data = "From=" + from + "&To=" + to + "&Body=" + body;
@@ -69,6 +71,32 @@ void ActivateAlarm::SendingSMSWithTwilio() {
             std::cerr << "Error: " << curl_easy_strerror(_res) << std::endl;
 
 
+    }
+}
+
+void ActivateAlarm::sendingTelegramMessage() {
+    if (_curl) {
+        std::string url = "https://3c00-82-80-173-170.ngrok-free.app/message";
+        nlohmann::json data = {
+                {"text", _message}
+        };
+        std::string json_data = data.dump();
+
+        curl_slist *headers = nullptr;
+        headers = curl_slist_append(headers, "Content-Type: application/json");
+
+        curl_easy_setopt(_curl, CURLOPT_URL, url.c_str());
+        curl_easy_setopt(_curl, CURLOPT_POST, 1L);
+        curl_easy_setopt(_curl, CURLOPT_POSTFIELDS, json_data.c_str());
+        curl_easy_setopt(_curl, CURLOPT_HTTPHEADER, headers);
+
+        _res = curl_easy_perform(_curl);
+
+        curl_slist_free_all(headers);  // Free the headers list
+
+        if (_res != CURLE_OK) {
+            std::cerr << "curl_easy_perform() failed: " << curl_easy_strerror(_res) << std::endl;
+        }
     }
 }
 

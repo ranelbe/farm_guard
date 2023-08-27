@@ -26,6 +26,7 @@ list(APPEND CMAKE_PREFIX_PATH "C:/Users/Ranel/Desktop/raspberry pi old/vcpkg/ins
 find_package(CURL REQUIRED)
 target_link_libraries(farm_guard PRIVATE CURL::libcurl)
 
+include_directories(/opt/homebrew/Cellar/nlohmann-json/3.11.2/include)
 
 
 add_subdirectory (include)
