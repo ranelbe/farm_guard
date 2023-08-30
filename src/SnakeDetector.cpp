@@ -20,7 +20,7 @@ bool SnakeDetector::isSnakeDetected(const cv::Mat& frame) {
 
     double confidence = prob.at<float>(0, 0);
 
-    std::cout << "Confidence: " << confidence << std::endl;
+//    std::cout << "Confidence: " << confidence << std::endl;
     return confidence > 0.95;
 }
 

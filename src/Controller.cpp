@@ -22,7 +22,7 @@ void Controller::run()
                 cv::putText(frame, "Motion Detected", cv::Point(10, 20), 
                     cv::FONT_HERSHEY_SIMPLEX, 0.75, cv::Scalar(0, 0, 255), 2);
                 if(_snakeDetector.runSnakeDetector(frame))
-                    _activateAlarm.SendingSMSWithTwilio();
+                    _activateAlarm.sendingTelegramMessage();
             }
         }
 

@@ -5,6 +5,7 @@
 class ActivateAlarm {
     CURL *_curl;
     CURLcode _res = CURLE_OK;
+    std::string _message;
 
     public:
     ActivateAlarm();
@@ -12,4 +13,5 @@ class ActivateAlarm {
     void activateAlarm();
     void SendingEMLWithSMTP();
     void SendingSMSWithTwilio();
+    void sendingTelegramMessage();
 };
