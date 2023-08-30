@@ -1,5 +1,7 @@
 #include "Controller.h"
 
+/*The main function runs the controller and handles all exceptions, either it is an open CV exception, a standard one
+ * or an unknown exception.*/
 int main() {
 
     try {

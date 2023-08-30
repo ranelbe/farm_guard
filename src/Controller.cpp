@@ -3,6 +3,10 @@
 Controller::Controller() : _snakeDetector("/Users/yaakovhaimoff/Desktop/school/year_3/semester2/excellents/bootcamp/raspberryPi/Resources/fine_tuned_model/frozen_model.pb")
 {}
 
+
+/*This is the cotnroller that runs all the features in the projects, it, firstly, activates the camera, then, it
+ * detects movements, captures a frame of a detected movement, then sends the frame to the classifier which checks
+ * if there is a snake in the frame or not, and accordingly activates the alarm system.*/
 void Controller::run()
 {
 
